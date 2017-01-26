@@ -30,12 +30,12 @@ Usage:
 ```
 Output will be like this:
 ```
-Wavelength for 145 MHz = 2.067534193103448 m  index.html:10:7
-Locator for E 009.7° N 53.5° = JO  index.html:12:7
-Locator for E 009.7° N 53.5° = JO43  index.html:13:7
-Locator for E 009.7° N 53.5° = JO43UN  index.html:14:7
-Position for locator JO43UN: 9.708333333333332 53.5625  index.html:17:7
-Bounding box for locator JO43UN: west:9.666666666666666 north:53.58333333333333 east:9.75 south:53.541666666666664
+Wavelength for 145 MHz = 2.067534193103448 m
+Locator for E 009.7° N 53.5° = JO
+Locator for E 009.7° N 53.5° = JO43
+Locator for E 009.7° N 53.5° = JO43UN
+Position for locator JO43UN: 9.70833 53.5625
+Bounding box for locator JO43UN: west:9.66667 north:53.58333 east:9.75 south:53.54167
 ```
 
 
