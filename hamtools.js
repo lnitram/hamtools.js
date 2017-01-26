@@ -2,7 +2,11 @@ function Hamtools() {
   var c = 299792458; // m/s
 
   this.f2l = function (frequency) {
-     return c/(frequency*1000000);
+     return c/(frequency*1000000.);
+  };
+
+  this.l2f = function(wavelength) {
+     return (c/wavelength)/1000000.;
   };
 
   this.locator2pos = function(locator) {

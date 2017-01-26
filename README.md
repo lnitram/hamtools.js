@@ -15,6 +15,7 @@ Usage:
     <script>
       var tools = new Hamtools();
       console.log("Wavelength for 145 MHz = " + tools.f2l(145) + " m");
+      console.log("Frequency for 2m = " + tools.l2f(2) + " MHz";
 
       console.log("Locator for E 009.7° N 53.5° = " + tools.pos2locator(9.7,53.58,1));
       console.log("Locator for E 009.7° N 53.5° = " + tools.pos2locator(9.7,53.58,2));
@@ -31,6 +32,7 @@ Usage:
 Output will be like this:
 ```
 Wavelength for 145 MHz = 2.067534193103448 m
+Frequency for 2m = 149.896229 MHz
 Locator for E 009.7° N 53.5° = JO
 Locator for E 009.7° N 53.5° = JO43
 Locator for E 009.7° N 53.5° = JO43UN

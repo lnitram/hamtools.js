@@ -7,6 +7,11 @@ describe('hamtools', function() {
       var tools = new hamtools.Hamtools();
       assert.ok(Math.abs(2.06753 - tools.f2l(145))<0.00001);
     });
+
+    it("Test wavelength to f", function() {
+      var tools = new hamtools.Hamtools();
+      assert.ok(Math.abs(149.89623 - tools.f2l(2))<0.00001);
+    });
   });
 
   describe('Locator tests', function() {
