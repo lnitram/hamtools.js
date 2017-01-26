@@ -20,5 +20,11 @@ describe('hamtools', function() {
       assert.ok(Math.abs(res.center.lon - 9.70833) < 0.00001);
       assert.ok(Math.abs(res.center.lat - 53.5625) < 0.00001);
     });
+
+    it("Test lonlat to locator", function(){
+      var tools = new hamtools.Hamtools();
+      var res = tools.pos2locator(9.70833,53.5625,3);
+      assert.equal(res,"JO43UN");
+    });
   });
 });

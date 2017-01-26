@@ -6,8 +6,6 @@ function Hamtools() {
   };
 
   this.locator2pos = function(locator) {
-    var d1 = "ABCDEFGHIJKLMNOPQR".split("");
-    var d2 = "ABCDEFGHIJKLMNOPQRSTUVWX".split("");
     var len = locator.length;
 
     if((len % 2 != 0) || (len > 6)) {
@@ -34,9 +32,35 @@ function Hamtools() {
     }
 
     return {north:y2, south:y1, west:x1, east:x2, center:{lon: x1 + (x2-x1)/2., lat: y1 + (y2-y1)/2.}}
-   
+  };
 
-
+  this.pos2locator = function(lon,lat,precision) {
+    var d1 = "ABCDEFGHIJKLMNOPQR".split("");
+    var d2 = "ABCDEFGHIJKLMNOPQRSTUVWX".split("");
+    var locator = "";
+	var x = lon;
+	var y = lat;
+      
+	while (x < -180) {x += 360;}
+	while (x > 180) {x -=360;}
+      
+	x = x + 180;
+	y = y + 90;
+      
+	locator = locator + d1[Math.floor(x/20)] + d1[Math.floor(y/10)];
+      
+	if (precision > 1) {
+		rlon = x%20;
+		rlat = y%10;
+		locator += Math.floor(rlon/2) +""+ Math.floor(rlat/1);
+	}
+         
+	if (precision > 2) {
+		rlon = rlon%2;
+		rlat = rlat%1;
+		locator += d2[Math.floor(rlon/(2/24))] + "" + d2[Math.floor(rlat/(1/24))];
+	}
+	return locator;
   };
 
 
