@@ -1,2 +1,20 @@
 # hamtools.js
-plan is to have some useful functions for hamradio stuff. Nothing useful so far...
+
+Nothing useful so far...
+
+
+Install:
+```
+npm install
+```
+
+Run the tests:
+```
+npm test
+```
+
+Build release:
+```
+grunt
+```
+
