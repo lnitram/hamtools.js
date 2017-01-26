@@ -16,5 +16,10 @@
     "url": "https://github.com/lnitram/hamtools.js/issues"
   },
   "homepage": "https://github.com/lnitram/hamtools.js#readme",
-  "private": true
+  "private": true,
+  "dependencies": {
+     "grunt": "^1.0.1",
+     "grunt-contrib-uglify": "^2.0.0",
+     "mocha": "^3.0.2"
+  }
 }
