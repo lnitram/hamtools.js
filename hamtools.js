@@ -1,15 +1,15 @@
-function Hamtools() {
+var Hamtools = (function(){
   var c = 299792458; // m/s
 
-  this.f2l = function (frequency) {
+  var f2l = function (frequency) {
      return c/(frequency*1000000.);
   };
 
-  this.l2f = function(wavelength) {
+  var l2f = function(wavelength) {
      return (c/wavelength)/1000000.;
   };
 
-  this.locator2pos = function(locator) {
+  var loc2pos = function(locator) {
     var len = locator.length;
 
     if((len % 2 != 0) || (len > 6)) {
@@ -28,7 +28,7 @@ function Hamtools() {
       y2 = y1 + 1;
     }
 
-    if(len == 6) {		
+    if(len == 6) {              
       x1 = x1 + (locator.toUpperCase().charCodeAt(4)-65)*2/24;
       x2 = x1 + 2/24;
       y1 = y1 + (locator.toUpperCase().charCodeAt(5)-65)*1/24;
@@ -38,37 +38,50 @@ function Hamtools() {
     return {north:y2, south:y1, west:x1, east:x2, center:{lon: x1 + (x2-x1)/2., lat: y1 + (y2-y1)/2.}}
   };
 
-  this.pos2locator = function(lon,lat,precision) {
+  var pos2loc = function(lon,lat,precision) {
     var d1 = "ABCDEFGHIJKLMNOPQR".split("");
     var d2 = "ABCDEFGHIJKLMNOPQRSTUVWX".split("");
     var locator = "";
-	var x = lon;
-	var y = lat;
-      
-	while (x < -180) {x += 360;}
-	while (x > 180) {x -=360;}
-      
-	x = x + 180;
-	y = y + 90;
-      
-	locator = locator + d1[Math.floor(x/20)] + d1[Math.floor(y/10)];
-      
-	if (precision > 1) {
-		rlon = x%20;
-		rlat = y%10;
-		locator += Math.floor(rlon/2) +""+ Math.floor(rlat/1);
-	}
-         
-	if (precision > 2) {
-		rlon = rlon%2;
-		rlat = rlat%1;
-		locator += d2[Math.floor(rlon/(2/24))] + "" + d2[Math.floor(rlat/(1/24))];
-	}
-	return locator;
+    var x = lon;
+    var y = lat;
+
+    while (x < -180) {x += 360;}
+    while (x > 180) {x -=360;}
+
+    x = x + 180;
+    y = y + 90;
+
+    locator = locator + d1[Math.floor(x/20)] + d1[Math.floor(y/10)];
+
+    if (precision > 1) {
+      rlon = x%20;
+      rlat = y%10;
+      locator += Math.floor(rlon/2) +""+ Math.floor(rlat/1);
+    }
+
+    if (precision > 2) {
+      rlon = rlon%2;
+      rlat = rlat%1;
+      locator += d2[Math.floor(rlon/(2/24))] + "" + d2[Math.floor(rlat/(1/24))];
+    }
+
+    return locator;
   };
 
 
-};
+  return {
+    f2l:f2l,
+    l2f:l2f,
+    loc2pos:loc2pos,
+    pos2loc:pos2loc
+  };
+
+
+
+
+
+})();
+
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports.Hamtools = Hamtools;

@@ -13,15 +13,14 @@ Usage:
   </head>
   <body>
     <script>
-      var tools = new Hamtools();
-      console.log("Wavelength for 145 MHz = " + tools.f2l(145) + " m");
-      console.log("Frequency for 2m = " + tools.l2f(2) + " MHz";
+      console.log("Wavelength for 145 MHz = " + Hamtools.f2l(145) + " m");
+      console.log("Freqzency for 2 m      = " + Hamtools.l2f(2) + " MHz");
 
-      console.log("Locator for E 009.7° N 53.5° = " + tools.pos2locator(9.7,53.58,1));
-      console.log("Locator for E 009.7° N 53.5° = " + tools.pos2locator(9.7,53.58,2));
-      console.log("Locator for E 009.7° N 53.5° = " + tools.pos2locator(9.7,53.58,3));
+      console.log("Locator for E 009.7° N 53.5° = " + Hamtools.pos2loc(9.7,53.58,1));
+      console.log("Locator for E 009.7° N 53.5° = " + Hamtools.pos2loc(9.7,53.58,2));
+      console.log("Locator for E 009.7° N 53.5° = " + Hamtools.pos2loc(9.7,53.58,3));
 
-      var pos = tools.locator2pos("JO43UN");
+      var pos = Hamtools.loc2pos("JO43UN");
       console.log("Position for locator JO43UN: " + pos.center.lon + " " + pos.center.lat);
       console.log("Bounding box for locator JO43UN: west:" + pos.west + " north:" + pos.north + " east:" + pos.east + " south:" + pos.south);
     </script>
