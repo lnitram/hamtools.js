@@ -33,6 +33,11 @@ describe('hamtools', function() {
       assert.equal(d.u, 12);
       assert.equal(d.i, 2);
     });
+
+    it("Test distance", function(){
+      var d = Hamtools.distance(40.714268,-74.005974,53.553406,9.992196);
+      assert.ok(Math.abs(6129.6094 - d) < 0.0001);
+    });
   });
 
   describe('Locator tests', function() {
