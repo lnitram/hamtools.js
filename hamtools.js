@@ -9,6 +9,29 @@ var Hamtools = (function(){
      return (c/wavelength)/1000000.;
   };
 
+  var uripui = function(d) {
+     if (d.u != null && d.r != null) {
+       d.i = d.u/d.r;
+       d.p = d.u * d.i;
+     } else if (d.u != null && d.i != null) {
+       d.r = d.u/d.i;
+       d.p = d.u * d.i;
+     } else if (d.u != null && d.p != null) {
+       d.i = d.p/d.u;
+       d.r = d.u/d.i;
+     } else if (d.r != null && d.i != null) {
+       d.u = d.r * d.i;
+       d.p = d.u * d.i;
+     } else if (d.r != null && d.p != null) {
+       d.i = Math.sqrt(d.p/d.r);
+       d.u = d.r * d.i;
+     } else if (d.i != null && d.p != null) {
+       d.u = d.p/d.i;
+       d.r = d.u/d.i;
+     }
+     return d;
+  };
+
   var loc2pos = function(locator) {
     var len = locator.length;
 
@@ -73,7 +96,8 @@ var Hamtools = (function(){
     f2l:f2l,
     l2f:l2f,
     loc2pos:loc2pos,
-    pos2loc:pos2loc
+    pos2loc:pos2loc,
+    uripui:uripui
   };
 
 
