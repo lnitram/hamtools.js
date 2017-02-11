@@ -54,6 +54,8 @@ describe('hamtools', function() {
     it("Test lonlat to locator", function(){
       var res = Hamtools.pos2loc(9.70833,53.5625,3);
       assert.equal(res,"JO43UN");
+      res = Hamtools.pos2loc(12.694165,50.806689,3);
+      assert.equal(res,"JO60IT");
     });
   });
 });
