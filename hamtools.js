@@ -77,8 +77,8 @@ var Hamtools = (function(){
   };
 
   var pos2loc = function(lon,lat,precision) {
-    var d1 = "ABCDEFGHIJKLMNOPQR".split("");
-    var d2 = "ABCDEFGHIJKLMNOPQRSTUVWX".split("");
+    var d1 = "ABCDEFGHIJKLMNOPQR";
+    var d2 = "ABCDEFGHIJKLMNOPQRSTUVWX";
     var locator = "";
     var x = lon;
     var y = lat;
