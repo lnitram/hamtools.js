@@ -116,10 +116,6 @@ var Hamtools = (function(){
     distance:distance
   };
 
-
-
-
-
 })();
 
 
