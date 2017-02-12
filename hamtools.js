@@ -1,14 +1,21 @@
 var Hamtools = (function(){
   var c = 299792458; // m/s
 
+  // Calculate wavelength in m from frequency in MHz
   var f2l = function (frequency) {
      return c/(frequency*1000000.);
   };
 
+  // Calculate frequency in MHz from wavelength in m
   var l2f = function(wavelength) {
      return (c/wavelength)/1000000.;
   };
 
+  // Calculate 4 out of 2:
+  // i = current
+  // u = voltage
+  // r = resistance
+  // p = demand
   var uripui = function(d) {
      if (d.u != null && d.r != null) {
        d.i = d.u/d.r;
@@ -32,6 +39,7 @@ var Hamtools = (function(){
      return d;
   };
 
+  // calculate distance in km between 2x lon and lat
   var distance = function (lat1,lon1,lat2,lon2) {
     var R = 6371.000785;
     var dLat = deg2rad(lat2-lat1);
@@ -45,8 +53,10 @@ var Hamtools = (function(){
     return d;
   }
 
+  // calculate rad from degree
   function deg2rad(deg) { return deg * (Math.PI/180);}
 
+  // converts locator to center position and bounding box
   var loc2pos = function(locator) {
     var len = locator.length;
 
@@ -76,6 +86,7 @@ var Hamtools = (function(){
     return {north:y2, south:y1, west:x1, east:x2, center:{lon: x1 + (x2-x1)/2., lat: y1 + (y2-y1)/2.}}
   };
 
+  // converts lon and lat to locator (1-3 precision)
   var pos2loc = function(lon,lat,precision) {
     var d1 = "ABCDEFGHIJKLMNOPQR";
     var d2 = "ABCDEFGHIJKLMNOPQRSTUVWX";
@@ -106,6 +117,7 @@ var Hamtools = (function(){
     return locator;
   };
 
+  // parsing position formats to lon and lat
   var parsePosition = function(s) {
     var res = {};
     res["s"] = s;
@@ -128,6 +140,7 @@ var Hamtools = (function(){
     throw ("Unknown format: " + s);
   }
 
+  // public interface
   return {
     f2l:f2l,
     l2f:l2f,
