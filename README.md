@@ -36,6 +36,18 @@ var s = "54°30.0' S 9°30.0' E";
 var pos = Hamtools.parsePosition(s);
 var lon = pos["lon"] // =>   9.5
 var lat = pos["lat"] // => -54.5
+
+// Calculate distance between 2 lon / lat
+// New York
+var lon1 = -74.005974;
+var lat1 = 40.714268;
+
+// Hamburg
+var lon2 = 9.992196;
+var lat2 = 53.553406;
+
+var distance = Hamtools.distance(lat1,lon1,lat2,lon2); // => 6129.61 km
+
 ```
 
 
