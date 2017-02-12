@@ -30,6 +30,12 @@ var bb_west  = pos.west;       // => 9.66667
 var bb_north = pos.north;      // => 53.58333
 var bb_east  = pos.east;       // => 9.75
 var bb_south = pos.south;      // => south:53.54167
+
+// Parse position with degrees and minutes to decimal degrees
+var s = "54°30.0' S 9°30.0' E";
+var pos = Hamtools.parsePosition(s);
+var lon = pos["lon"] // =>   9.5
+var lat = pos["lat"] // => -54.5
 ```
 
 
