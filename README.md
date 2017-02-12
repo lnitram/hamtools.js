@@ -1,42 +1,35 @@
 # hamtools.js
 
-Nothing useful so far...
+Some functions I need from time to time, put together in a toolbox / library. Maybe it's useful for somebody else. No license decision yet, just ask if you want to use it.
 
+Import js lib to your html:
 
-Usage:
 ```
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8"> 
-    <script src="hamtools.min.js"></script>
-  </head>
-  <body>
-    <script>
-      console.log("Wavelength for 145 MHz = " + Hamtools.f2l(145) + " m");
-      console.log("Freqzency for 2 m      = " + Hamtools.l2f(2) + " MHz");
-
-      console.log("Locator for E 009.7° N 53.5° = " + Hamtools.pos2loc(9.7,53.58,1));
-      console.log("Locator for E 009.7° N 53.5° = " + Hamtools.pos2loc(9.7,53.58,2));
-      console.log("Locator for E 009.7° N 53.5° = " + Hamtools.pos2loc(9.7,53.58,3));
-
-      var pos = Hamtools.loc2pos("JO43UN");
-      console.log("Position for locator JO43UN: " + pos.center.lon + " " + pos.center.lat);
-      console.log("Bounding box for locator JO43UN: west:" + pos.west + " north:" + pos.north + " east:" + pos.east + " south:" + pos.south);
-    </script>
-    see js-console for output
-  </body>
-</html>
+<script src="hamtools.min.js"></script>
 ```
-Output will be like this:
+
+Now use it:
+
 ```
-Wavelength for 145 MHz = 2.067534193103448 m
-Frequency for 2m = 149.896229 MHz
-Locator for E 009.7° N 53.5° = JO
-Locator for E 009.7° N 53.5° = JO43
-Locator for E 009.7° N 53.5° = JO43UN
-Position for locator JO43UN: 9.70833 53.5625
-Bounding box for locator JO43UN: west:9.66667 north:53.58333 east:9.75 south:53.54167
+// Calculate wavelength in meter for frequency in MHz
+var wavelength = Hamtools.f2l(145); # => 2.06753
+
+// Calculate frequency in MHz for wavelength in meters
+var frequency = Hamtools.l2f(2); # => 149.8962
+
+// Calculate maidenhead locator from lon and lat
+var loc = Hamtools.pos2loc(9.7,53.58,1)); # => JO
+var loc = Hamtools.pos2loc(9.7,53.58,2)); # => JO43
+var loc = Hamtools.pos2loc(9.7,53.58,3)); # => JO43UN
+
+// Calculate position and bounding box for locator
+var pos      = Hamtools.loc2pos("JO43UN");
+var lon      = pos.center.lon; # => 9.70833
+var lat      = pos.center.lat; # => 53.5625
+var bb_west  = pos.west;       # => 9.66667
+var bb_north = pos.north;      # => 53.58333
+var bb_east  = pos.east;       # => 9.75
+var bb_south = pos.south;      # => south:53.54167
 ```
 
 
