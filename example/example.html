@@ -9,7 +9,6 @@
       function calcWavelength() {
         var freq = parseFloat(document.getElementById("freq").value);
         var wl   = Hamtools.f2l(freq);
-        console.log(wl + "  jklkjklj ");
         document.getElementById("freq2wave").innerHTML = wl;
       }
 
@@ -21,10 +20,16 @@
 
       function parsePos() {
         var s = document.getElementById("posstring").value;
-        var pos = Hamtools.parsePosition(s);
-        document.getElementById("lon").innerHTML = pos["lon"];
-        document.getElementById("lat").innerHTML = pos["lat"];
-        document.getElementById("loc").innerHTML = Hamtools.pos2loc(pos["lon"],pos["lat"],3);
+        try {
+          var pos = Hamtools.parsePosition(s);
+          document.getElementById("lon").innerHTML = pos["lon"];
+          document.getElementById("lat").innerHTML = pos["lat"];
+          document.getElementById("loc").innerHTML = Hamtools.pos2loc(pos["lon"],pos["lat"],3);
+        } catch (err) {
+          document.getElementById("lon").innerHTML = "---";
+          document.getElementById("lat").innerHTML = "---";
+          document.getElementById("loc").innerHTML = "Unknown format";
+        }
       }
     </script>
 
@@ -39,6 +44,10 @@
     <tr><td>Wavelength:</td><td><span id="wave2freq"/></span>MHz</td></tr>
     </table>
     <h2>Parse position to lonLat</h2>
+    <p>Currently the following formats are supported:</p>
+    <ul>
+      <li>dd°mm.m' N ddd°mm.m' E</li>
+    </ul>
     <table>
       <tr><td>Position</td><td><input type="text" id="posstring" oninput="parsePos()"/></td></tr>
       <tr><td>Parsed:</td><td>Lon: <span id="lon"></span><br/>Lat: <span id="lat"></span><br/>Loc: <span id="loc"></span></td></tr>
