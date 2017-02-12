@@ -57,5 +57,17 @@ describe('hamtools', function() {
       res = Hamtools.pos2loc(12.694165,50.806689,3);
       assert.equal(res,"JO60IT");
     });
+ 
+    it("Test position parser", function(){
+      var res = Hamtools.parsePosition("53°30.0' N 9°30.0' E");
+      assert.equal(res["s"],"53°30.0' N 9°30.0' E");
+      assert.equal(53.5, res["lat"]);
+      assert.equal(9.5, res["lon"]);
+
+      res = Hamtools.parsePosition("53°30.0' S 9°30.0' W");
+      assert.equal(res["s"],"53°30.0' S 9°30.0' W");
+      assert.equal(-53.5, res["lat"]);
+      assert.equal(-9.5, res["lon"]);
+    });
   });
 });

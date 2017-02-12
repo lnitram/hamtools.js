@@ -106,6 +106,25 @@ var Hamtools = (function(){
     return locator;
   };
 
+  var parsePosition = function(s) {
+    //"53°30.0' N 9°30.0' E"
+    var res = {};
+    res["s"] = s;
+    var Suche = /([0-9]{1,2})°([0-9]{1,2}\.[0-9]*)' ([NS]) ([0-9]{1,3})°([0-9]{1,2}\.[0-9]*)' ([EW])/;
+    var r = Suche.exec(s);
+    var latDeg = parseFloat(r[1]);
+    var latMin = parseFloat(r[2]);
+    var ns     = r[3];
+    var lonDeg = parseFloat(r[4]);
+    var lonMin = parseFloat(r[5]);
+    var ew     = r[6];
+    var latFactor = ns==="S"?-1:1;
+    var lonFactor = ew==="W"?-1:1;
+    res["lat"] = latFactor * (latDeg + latMin/60);
+    res["lon"] = lonFactor * (lonDeg + lonMin/60);
+
+    return res;
+  }
 
   return {
     f2l:f2l,
@@ -113,7 +132,8 @@ var Hamtools = (function(){
     loc2pos:loc2pos,
     pos2loc:pos2loc,
     uripui:uripui,
-    distance:distance
+    distance:distance,
+    parsePosition:parsePosition
   };
 
 })();
