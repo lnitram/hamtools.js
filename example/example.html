@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"> 
+    <script src="hamtools.min.js"></script>
+  </head>
+  <body>
+    <script>
+      function calcWavelength() {
+        var freq = parseFloat(document.getElementById("freq").value);
+        var wl   = Hamtools.f2l(freq);
+        console.log(wl + "  jklkjklj ");
+        document.getElementById("freq2wave").innerHTML = wl;
+      }
+
+      function calcFrequency() {
+        var wl = parseFloat(document.getElementById("wave").value);
+        var freq = Hamtools.l2f(wl);
+        document.getElementById("wave2freq").innerHTML = freq;
+      }
+
+      function parsePos() {
+        var s = document.getElementById("posstring").value;
+        var pos = Hamtools.parsePosition(s);
+        document.getElementById("lon").innerHTML = pos["lon"];
+        document.getElementById("lat").innerHTML = pos["lat"];
+        document.getElementById("loc").innerHTML = Hamtools.pos2loc(pos["lon"],pos["lat"],3);
+      }
+    </script>
+
+    <h2>Calculate wavelength from frequency</h2>
+    <table>
+    <tr><td>Frequency:</td><td><input type="text" id="freq" oninput="calcWavelength()"/>MHz</td></tr>
+    <tr><td>Wavelength:</td><td><span id="freq2wave"/></span>m</td></tr>
+    </table>
+    <h2>Calculate frequency from wavelength</h2>
+    <table>
+    <tr><td>Wavelength:</td><td><input type="text" id="wave" oninput="calcFrequency()"/>m</td></tr>
+    <tr><td>Wavelength:</td><td><span id="wave2freq"/></span>MHz</td></tr>
+    </table>
+    <h2>Parse position to lonLat</h2>
+    <table>
+      <tr><td>Position</td><td><input type="text" id="posstring" oninput="parsePos()"/></td></tr>
+      <tr><td>Parsed:</td><td>Lon: <span id="lon"></span><br/>Lat: <span id="lat"></span><br/>Loc: <span id="loc"></span></td></tr>
+    </table>
+    <script>
+  </body>
+</html>
