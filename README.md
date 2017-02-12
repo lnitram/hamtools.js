@@ -48,6 +48,35 @@ var lat2 = 53.553406;
 
 var distance = Hamtools.distance(lat1,lon1,lat2,lon2); // => 6129.61 km
 
+// Calculate resistance and demand from U=12V and I=2A
+var res = Hamtools.uripui({u:12, i:2});
+var   r = res.r; //  6 Ohm
+var   p = res.p; // 24 Watts
+
+// Calculate current and remand from U=12V and R=6 Ohm
+var res = Hamtools.uripui({u:12, r:6});
+var i = res.i; // 2 Ampere
+var p = res.p; // 24 Watts
+
+// Calculate current and restistance from U=12V and P=24W
+var res=  Hamtools.uripui({u:12, p:24});
+var i = res.i; // 2A
+var r = res.r; // 6 Ohm
+
+// Calculate voltage and demand from I=2A and R=6 Ohm
+var res = Hamtools.uripui({i:2, r:6});
+var u = res.u; // 12V
+var p = res.p; // 24W
+
+//Calculate voltage and resistance from I=2A and P=24W
+var res = Hamtools.uripui({i:2, p:24});
+var u = res.u; // 12V
+var r = res.r; // 6 Ohm
+
+// Calculate voltage and current from R=6 Ohm and P=24W
+var res = Hamtools.uripui({r:6, p:24});
+var u = res.u; // 12V
+var i = res.i; // 2A
 ```
 
 

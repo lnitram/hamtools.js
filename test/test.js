@@ -24,11 +24,11 @@ describe('hamtools', function() {
       assert.equal(d.i, 2);
       assert.equal(d.r, 6);
       d = Hamtools.uripui({i:2, r:6});
-      assert.equal(d.i, 2);
-      assert.equal(d.r, 6);
-      d = Hamtools.uripui({i:2, p:24});
-      assert.equal(d.i, 2);
+      assert.equal(d.u, 12);
       assert.equal(d.p, 24);
+      d = Hamtools.uripui({i:2, p:24});
+      assert.equal(d.u, 12);
+      assert.equal(d.r, 6);
       d = Hamtools.uripui({r:6, p:24});
       assert.equal(d.u, 12);
       assert.equal(d.i, 2);
