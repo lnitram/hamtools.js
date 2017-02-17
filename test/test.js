@@ -38,6 +38,14 @@ describe('hamtools', function() {
       var d = Hamtools.distance(40.714268,-74.005974,53.553406,9.992196);
       assert.ok(Math.abs(6129.6094 - d) < 0.0001);
     });
+
+    it("Test bearing", function(){
+      var b = Hamtools.bearing(40.714268,-74.005974,53.553406,9.992196);
+      assert.ok(Math.abs(46.06742 - b) < 0.0001);
+      b = Hamtools.bearing(53.553406,9.992196,40.714268,-74.005974);
+      assert.ok(Math.abs(293.24284 - b) < 0.0001);
+
+    });
   });
 
   describe('Locator tests', function() {

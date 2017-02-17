@@ -1,6 +1,14 @@
 var Hamtools = (function(){
   var c = 299792458; // m/s
 
+  if (Number.prototype.toRadians === undefined) {
+    Number.prototype.toRadians = function() { return this * Math.PI / 180; };
+  }
+
+  if (Number.prototype.toDegrees === undefined) {
+    Number.prototype.toDegrees = function() { return this * 180 / Math.PI; };
+  }
+
   // Calculate wavelength in m from frequency in MHz
   var f2l = function (frequency) {
      return c/(frequency*1000000.);
@@ -51,6 +59,13 @@ var Hamtools = (function(){
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     var d = R * c;
     return d;
+  }
+
+  var bearing = function(lat1,lon1,lat2,lon2) {
+    var y = Math.sin(lon2.toRadians()-lon1.toRadians()) * Math.cos(lat2.toRadians());
+    var x = Math.cos(lat1.toRadians())*Math.sin(lat2.toRadians()) - Math.sin(lat1.toRadians())*Math.cos(lat2.toRadians())*Math.cos(lon2.toRadians()-lon1.toRadians());
+    var brng = Math.atan2(y, x).toDegrees();
+    return (brng+360) % 360;
   }
 
   // calculate rad from degree
@@ -148,6 +163,7 @@ var Hamtools = (function(){
     pos2loc:pos2loc,
     uripui:uripui,
     distance:distance,
+    bearing:bearing,
     parsePosition:parsePosition
   };
 
