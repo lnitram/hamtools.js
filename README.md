@@ -47,6 +47,7 @@ var lon2 = 9.992196;
 var lat2 = 53.553406;
 
 var distance = Hamtools.distance(lat1,lon1,lat2,lon2); // => 6129.61 km
+var bearing  = Hamtools.bearing(lat1,lon1,lat2,lon2) ; // => 46.06742°
 
 // Calculate resistance and demand from U=12V and I=2A
 var res = Hamtools.uripui({u:12, i:2});
