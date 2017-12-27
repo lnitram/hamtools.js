@@ -3,7 +3,6 @@ def encodeLonLat(lon,lat,symid,symbol):
     lat_deg = int(abs(lat) // 1)
     lat_min = round(60.*(lat % 1),2)
     nw = "N" if lat >= 0 else "S"
-    #lat_result = str(lat_deg).zfill(2) + str(lat_min) + str(nw)
     lat_result = str(lat_deg).zfill(2) + '%05.2f' % lat_min + str(nw)
 
     lon_deg = int(abs(lon) // 1)
